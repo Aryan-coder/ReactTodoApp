@@ -1,5 +1,6 @@
 var initState={
     user: {
+        uid: '',
         name: '',
         todos: []
     }

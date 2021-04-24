@@ -36,7 +36,13 @@ const Sign=()=>{
         .then(responce=>{
             firebase.firestore().doc('/users/'+responce.user.uid).get().then(resp=>{
                 if(resp.exists){
-                    dispatch({type: 'SET', user: resp.data()})
+                        dispatch({
+                            type: 'SET', user: { 
+                                uid: responce.user.uid, 
+                                name: resp.data().name, 
+                                todos: resp.data().todos
+                            }
+                        })
                     setAuthenticated(true)
                 }
                 else{
