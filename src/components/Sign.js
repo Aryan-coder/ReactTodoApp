@@ -2,6 +2,7 @@ import {useState, useRef} from 'react'
 import {Redirect} from 'react-router-dom'
 import firebase from '../firebaseConfig.js'
 import {useDispatch} from 'react-redux'
+import './styles/Sign.css'
 
 const Sign=()=>{
 
@@ -52,9 +53,11 @@ const Sign=()=>{
 
         return(<div>
             <form onSubmit={(e)=>signInHandler(e)}>
+                <h2>Sign in</h2>
                 <input type='email' placeholder='email' name='email' />
                 <input type='password' placeholder='password' name='password' />
                 <button type='submit'>Submit</button>
+                <h4>Don't have account ? <span onClick={()=>setRegistered(false)} >click here</span> to create one.</h4>
             </form>
         </div>)
     }
@@ -62,10 +65,12 @@ const Sign=()=>{
     const  signUp=()=>{
         return(<div>
             <form onSubmit={(e)=>signUpHandler(e)}>
-                <input type='name' placeholder='text' name='name' />
+                <h2>Sign up</h2>
+                <input type='name' placeholder='username' name='name' />
                 <input type='email' placeholder='email' name='email' />
                 <input type='password' placeholder='password' name='password' />
                 <button type='submit'>Submit</button>
+                <h4>Already have account ? <span onClick={()=>setRegistered(true)} >click here</span> to Login.</h4>
             </form>
         </div>)
     }
