@@ -10,16 +10,21 @@ const Todo=()=>{
     const inputValue = useRef() 
 
     useEffect(()=>{
-       updateTodosInServer()
+        inputValue.current.value = ''
+        updateTodosInServer()
     },[todos])
 
     const addTodo=()=>{
+
+        const task = inputValue.current.value
+
+        if(task.length==0)return('');
 
         setTodos([
             ...todos,
             {
                 id: todos.length+1,
-                task: inputValue.current.value
+                task: task
             }
         ])
     }
